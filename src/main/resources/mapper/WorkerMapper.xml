@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.home_decoration.mapper.WorkerMapper">
+
+    <insert id="add">
+        insert into worker (w_name, w_idType, w_idNumber,
+                            w_typeWork, w_birthday, w_sex, w_nationality,
+                            w_domicileAddressCity, w_domicileAddress, w_phone,
+                            w_habitualResidenceCity, w_habitualResidence, w_emergencyContact,
+                            w_nation, w_wechatNumber, u_id, w_price, w_historyPrice, w_seniority, w_age)
+        values (#{w_name}, #{w_idType}, #{w_idNumber},
+                #{w_typeWork}, #{w_birthday}, #{w_sex}, #{w_nationality},
+                #{w_domicileAddressCity}, #{w_domicileAddress}, #{w_phone},
+                #{w_habitualResidenceCity}, #{w_habitualResidence}, #{w_emergencyContact},
+                #{w_nation}, #{w_wechatNumber}, #{u_id}, #{w_price}, #{w_historyPrice}, #{w_seniority}, #{w_age})
+    </insert>
+
+    <update id="update" parameterType="Worker">
+        update worker
+        set w_name                  = #{w_name},
+            w_idType                = #{w_idType},
+            w_idNumber              = #{w_idNumber},
+            w_typeWork              = #{w_typeWork},
+            w_birthday              = #{w_birthday},
+            w_sex                   = #{w_sex},
+            w_nationality           = #{w_nationality},
+            w_domicileAddressCity   = #{w_domicileAddressCity},
+            w_domicileAddress       = #{w_domicileAddress},
+            w_phone                 = #{w_phone},
+            w_habitualResidenceCity = #{w_habitualResidenceCity},
+            w_habitualResidence     = #{w_habitualResidence},
+            w_emergencyContact      = #{w_emergencyContact},
+            w_nation                = #{w_nation},
+            w_wechatNumber          = #{w_wechatNumber},
+            u_id                    = #{u_id},
+            w_price                 = #{w_price},
+            w_historyPrice          = #{w_historyPrice},
+            w_seniority             = #{w_seniority},
+            w_age                   = #{w_age}
+        where w_id = #{w_id}
+    </update>
+
+    <select id="getById" parameterType="Integer" resultType="Worker">
+        select *
+        from worker
+        where w_id = #{w_id}
+    </select>
+
+    <select id="getByU_Id" parameterType="Integer" resultType="Worker">
+        select *
+        from worker
+        where u_id = #{u_id}
+    </select>
+
+    <select id="getWorkers" resultType="com.example.home_decoration.model.QueryHome">
+        SELECT *
+        from worker
+        <where>
+            <if test="w_typeWork != null and w_typeWork!=''">
+                and w_typeWork like "%"#{w_typeWork}"%"
+            </if>
+            <if test="w_habitualResidenceCity != null and w_habitualResidenceCity!=''">
+                and w_habitualResidenceCity like "%"#{w_habitualResidenceCity}"%"
+            </if>
+        </where>
+        order by w_ranking desc
+        limit #{pageNum},#{pageSize}
+    </select>
+
+    <select id="getConstructionWorker" resultType="com.example.home_decoration.model.ConstructionQuery">
+        select w.w_name, o.o_address, o.o_type, o.o_firstDate, o.o_lastDate, o.o_schedule
+        from worker w
+        inner join workerorder o
+        on w.w_id = o.w_id
+    </select>
+
+    <delete id="delete" parameterType="Worker">
+        delete
+        from worker
+        where w_id = #{w_id}
+    </delete>
+
+    <select id="getW_idByU_id" resultType="Integer">
+        select w_id from worker where u_id = #{u_id}
+    </select>
+
+    <update id="workerUpload" parameterType="Worker">
+        update worker
+        set w_picture = #{url}
+        where w_id = #{w_id}
+    </update>
+
+    <select id="getWorkerPrices" parameterType="Integer" resultType="Map">
+        select w_price, w_historyPrice
+        from worker
+        where w_id = #{w_id}
+    </select>
+
+    <select id="getHistoryOrder" parameterType="Integer" resultType="WorkerOrder">
+        select o_address,
+               o_date,
+               o_area,
+               o_garde,
+               o_price
+        from workerorder
+        where w_id = #{w_id}
+    </select>
+</mapper>

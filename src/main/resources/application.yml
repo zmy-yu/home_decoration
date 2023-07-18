@@ -1,0 +1,20 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://39.98.204.167:3336/home decoration?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: zmy111
+
+  # JSON配置，设定不对未知字段和空值字段进行序列化节省流量
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+    default-property-inclusion: non_null
+
+server:
+  port: 9876
+
+mybatis:
+  type-aliases-package: com.example.home_decoration.pojo
+  mapper-locations: classpath:mapper/*.xml
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.home_decoration.mapper.UserMapper">
+    <insert id="add" parameterType="User">
+        insert into user (u_username, u_password)
+        values (#{u_username}, #{u_password})
+    </insert>
+
+    <update id="update" parameterType="User">
+        update user
+        set u_username     = #{u_username},
+            u_password     = #{u_password},
+            u_phone        = #{u_phone},
+            u_wechatNumber = #{u_wechatNumber},
+            u_role         = #{u_role},
+        where u_id = #{u_id}
+    </update>
+
+    <select id="getById" parameterType="Integer" resultType="User">
+        select *
+        from user
+        where u_id = #{u_id}
+    </select>
+
+    <select id="getByName" parameterType="String" resultType="User">
+        select *
+        from user
+        where u_username = #{u_username}
+    </select>
+
+    <delete id="delete" parameterType="User">
+        delete from user
+        where u_id = #{u_id}
+    </delete>
+
+    <update id="updateRole" parameterType="Integer">
+        update user
+        set w_id = #{w_id},
+            u_role = #{u_role}
+        where u_id = #{u_id}
+    </update>
+
+    <update id="userUpload" parameterType="User">
+        update user
+        set u_picture = #{url}
+        where u_id = #{u_id}
+    </update>
+</mapper>
