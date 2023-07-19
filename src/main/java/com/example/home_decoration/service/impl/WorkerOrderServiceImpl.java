@@ -38,11 +38,8 @@ public class WorkerOrderServiceImpl implements WorkerOrderService {
      * @return
      */
     @Override
-    public Result<WorkerOrder> updateHistoryOrder(WorkerOrder workerOrder) {
-        Result<WorkerOrder> result = new Result<>();
-        workerOrderMapper.updateHistoryOrder(workerOrder);
-        result.setResultSuccess("修改成功", workerOrder);
-        return result;
+    public int updateHistoryOrder(WorkerOrder workerOrder) {
+        return workerOrderMapper.updateHistoryOrder(workerOrder);
     }
 
     @Override

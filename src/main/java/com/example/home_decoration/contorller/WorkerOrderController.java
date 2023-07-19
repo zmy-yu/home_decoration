@@ -42,14 +42,18 @@ public class WorkerOrderController {
      * @return
      */
     @PutMapping("/updateHistoryOrder")
-    public Result<WorkerOrder> updateHistoryOrder(@RequestBody WorkerOrder workerOrder, HttpServletRequest request) {
-        Result<WorkerOrder> result = new Result<>();
+    public Result<WorkerOrder> updateHistoryOrder(@RequestBody WorkerOrder[] workerOrder, HttpServletRequest request) {
+        Result result = new Result<>();
         Integer u_role = JwtUtil.getU_role(request);
         if (u_role != 9) {
             result.setResultFailed("没有权限修改，请联系管理员！");
             return result;
         }
-        return workerOrderService.updateHistoryOrder(workerOrder);
+        for (int i = 0; i < workerOrder.length; i++) {
+            workerOrderService.updateHistoryOrder(workerOrder[i]);
+        }
+        result.setResultSuccess("修改成功！");
+        return result;
     }
 
     /**

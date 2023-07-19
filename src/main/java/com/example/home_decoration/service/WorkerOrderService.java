@@ -23,7 +23,7 @@ public interface WorkerOrderService {
      * @param workerOrder
      * @return
      */
-    Result<WorkerOrder> updateHistoryOrder(WorkerOrder workerOrder);
+    int updateHistoryOrder(WorkerOrder workerOrder);
 
     /**
      * 添加工人装修历史

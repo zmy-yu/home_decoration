@@ -38,7 +38,8 @@
             w_price                 = #{w_price},
             w_historyPrice          = #{w_historyPrice},
             w_seniority             = #{w_seniority},
-            w_age                   = #{w_age}
+            w_age                   = #{w_age},
+            w_completedQuantity     = #{w_completedQuantity}
         where w_id = #{w_id}
     </update>
 
@@ -103,7 +104,8 @@
                o_date,
                o_area,
                o_garde,
-               o_price
+               o_price,f
+               o_id
         from workerorder
         where w_id = #{w_id}
     </select>
