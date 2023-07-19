@@ -4,6 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.home_decoration.mapper.WorkerOrderMapper">
 
-
+    <update id="update" parameterType="com.example.home_decoration.model.ConstructionQuery">
+        update workerorder
+        set o_address = #{o_address},
+            o_type = #{o_type},
+            o_firstDate = #{o_firstDate},
+            o_lastDate = #{o_lastDate},
+            o_schedule = #{o_schedule}
+        where o_id = #{o_id}
+    </update>
 
 </mapper>

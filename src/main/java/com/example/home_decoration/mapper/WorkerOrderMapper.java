@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Mapper
-@RequestMapping("/workerorder")
 public interface WorkerOrderMapper {
 
     /**
