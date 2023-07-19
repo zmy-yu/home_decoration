@@ -14,4 +14,23 @@
         where o_id = #{o_id}
     </update>
 
+    <update id="updateHistoryOrder" parameterType="WorkerOrder">
+        update workerorder
+        set o_date = #{o_date},
+            o_area = #{o_area},
+            o_garde = #{o_garde},
+            o_price = #{o_price},
+            o_address = #{o_address}
+        where o_id = #{o_id}
+    </update>
+
+    <insert id="add" parameterType="WorkerOrder">
+        insert into workerorder (o_date, o_area, o_garde, o_price, o_address, w_id)
+        values (#{o_date}, #{o_area}, #{o_garde}, #{o_price}, #{o_address}, #{w_id})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        delete from workerorder
+        where o_id = #{o_id}
+    </delete>
 </mapper>

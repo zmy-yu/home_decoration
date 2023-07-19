@@ -79,4 +79,12 @@ public interface WorkerService {
      * @return
      */
     Result<List<WorkerOrder>> getHistoryOrder(Integer w_id);
+
+    /**
+     * 修改工人历史价格
+     *
+     * @param worker
+     * @return
+     */
+    Result<Worker> updateWorkerPrices(Worker worker);
 }

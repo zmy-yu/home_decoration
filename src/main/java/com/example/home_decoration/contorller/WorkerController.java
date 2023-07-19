@@ -139,16 +139,16 @@ public class WorkerController {
     public Result<Worker> delete(@RequestBody Worker worker, HttpServletRequest request) {
         Result<Worker> result = new Result<>();
         Integer u_id = JwtUtil.getU_id(request);
-        Integer w_id = JwtUtil.getW_id(request);
+//        Integer w_id = JwtUtil.getW_id(request);
         Integer u_role = JwtUtil.getU_role(request);
         if (u_role == 9) {
             result = workerService.delete(worker, u_id);
             return result;
         }
-        if (w_id != worker.getW_id().intValue()) {
-            result.setResultFailed("当前登录用户和被修改用户不一致，终止！");
-            return result;
-        }
+//        if (w_id != worker.getW_id().intValue()) {
+//            result.setResultFailed("当前登录用户和被修改用户不一致，终止！");
+//            return result;
+//        }
         worker.setU_id(u_id);
         return workerService.delete(worker, u_id);
     }
@@ -210,5 +210,23 @@ public class WorkerController {
     @GetMapping("/historyorder")
     public Result<List<WorkerOrder>> getHistoryOrder(@RequestParam("w_id") Integer w_id) {
         return workerService.getHistoryOrder(w_id);
+    }
+
+    /**
+     * 修改工人历史价格
+     *
+     * @param worker
+     * @param request
+     * @return
+     */
+    @PutMapping("/updateprices")
+    public Result<Worker> updateHistoryPrices(@RequestBody Worker worker, HttpServletRequest request) {
+        Result<Worker> result = new Result<>();
+        Integer u_role = JwtUtil.getU_role(request);
+        if (u_role != 9) {
+            result.setResultFailed("没有权限修改，请联系管理员！");
+            return result;
+        }
+        return workerService.updateWorkerPrices(worker);
     }
 }

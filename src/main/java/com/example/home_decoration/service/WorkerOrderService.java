@@ -17,4 +17,27 @@ public interface WorkerOrderService {
      */
     int update(ConstructionQuery constructionQuery);
 
+    /**
+     * 修改工人装修历史
+     *
+     * @param workerOrder
+     * @return
+     */
+    Result<WorkerOrder> updateHistoryOrder(WorkerOrder workerOrder);
+
+    /**
+     * 添加工人装修历史
+     *
+     * @param workerOrder
+     * @return
+     */
+    Result<WorkerOrder> add(WorkerOrder workerOrder);
+
+    /**
+     * 删除工人装修历史
+     *
+     * @param o_id
+     * @return
+     */
+    Result<WorkerOrder> delete(Integer o_id);
 }

@@ -132,4 +132,13 @@ public class WorkerServiceImpl implements WorkerService {
         result.setResultSuccess("1", workerMapper.getHistoryOrder(w_id));
         return result;
     }
+
+    @Override
+    public Result<Worker> updateWorkerPrices(Worker worker) {
+        Result<Worker> result = new Result<>();
+        workerMapper.updateWorkerPrices(worker);
+        result.setResultSuccess("修改成功！");
+        return result;
+    }
+
 }

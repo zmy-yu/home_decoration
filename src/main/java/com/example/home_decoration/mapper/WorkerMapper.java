@@ -95,4 +95,13 @@ public interface WorkerMapper {
      * @return
      */
     int updateNameById(Integer w_id, String w_name);
+
+    /**
+     * 修改工人历史价格
+     *
+     * @param worker
+     * @return
+     */
+    int updateWorkerPrices(Worker worker);
+
 }

@@ -30,4 +30,36 @@ public class WorkerOrderServiceImpl implements WorkerOrderService {
         workerMapper.updateNameById(Integer.valueOf(constructionQuery.getW_id()), constructionQuery.getW_name());
         return workerOrderMapper.update(constructionQuery);
     }
+
+    /**
+     * 修改工人信息装修历史记录
+     *
+     * @param workerOrder 订单对象
+     * @return
+     */
+    @Override
+    public Result<WorkerOrder> updateHistoryOrder(WorkerOrder workerOrder) {
+        Result<WorkerOrder> result = new Result<>();
+        workerOrderMapper.updateHistoryOrder(workerOrder);
+        result.setResultSuccess("修改成功", workerOrder);
+        return result;
+    }
+
+    @Override
+    public Result<WorkerOrder> add(WorkerOrder workerOrder) {
+        Result<WorkerOrder> result = new Result<>();
+        workerOrderMapper.add(workerOrder);
+        result.setResultSuccess("添加成功！ ");
+        return result;
+    }
+
+    @Override
+    public Result<WorkerOrder> delete(Integer o_id) {
+        Result<WorkerOrder> result = new Result<>();
+        workerOrderMapper.delete(o_id);
+        result.setResultSuccess("删除成功！");
+        return result;
+    }
+
+
 }

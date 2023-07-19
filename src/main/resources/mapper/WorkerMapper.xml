@@ -113,4 +113,11 @@
         set w_name = #{w_name}
         where w_id = #{w_id}
     </update>
+
+    <update id="updateWorkerPrices" parameterType="Integer">
+        update worker
+        set w_price = #{w_price},
+            w_historyPrice = #{w_historyPrice}
+        where w_id = #{w_id}
+    </update>
 </mapper>
