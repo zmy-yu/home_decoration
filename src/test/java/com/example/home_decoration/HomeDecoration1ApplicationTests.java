@@ -10,7 +10,8 @@ class HomeDecoration1ApplicationTests {
 
     @Test
     void contextLoads() throws ParseException {
-
+        String str = "123";
+        System.out.println(Integer.valueOf(str));
     }
 
 }

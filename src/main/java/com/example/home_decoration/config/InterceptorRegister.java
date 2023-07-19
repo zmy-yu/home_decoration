@@ -33,6 +33,8 @@ public class InterceptorRegister implements WebMvcConfigurer {
 		pathPatterns.add("/worker/add");
 		pathPatterns.add("/worker/update");
 		pathPatterns.add("/worker/delete");
+
+		pathPatterns.add("/order/update");
 		registry.addInterceptor(jwtInterceptor)
 				.addPathPatterns(pathPatterns);
 

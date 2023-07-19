@@ -17,4 +17,6 @@ public class ConstructionQuery {
     private LocalDate o_firstDate;
     private LocalDate o_lastDate;
     private Integer o_schedule;
+    private Integer o_id;
+    private Integer w_id;
 }

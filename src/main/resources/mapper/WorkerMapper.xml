@@ -70,7 +70,7 @@
     </select>
 
     <select id="getConstructionWorker" resultType="com.example.home_decoration.model.ConstructionQuery">
-        select w.w_name, o.o_address, o.o_type, o.o_firstDate, o.o_lastDate, o.o_schedule
+        select w.w_name, o.o_address, o.o_type, o.o_firstDate, o.o_lastDate, o.o_schedule, o.o_id, w.w_id
         from worker w
         inner join workerorder o
         on w.w_id = o.w_id
@@ -107,4 +107,10 @@
         from workerorder
         where w_id = #{w_id}
     </select>
+
+    <update id="updateNameById" >
+        update worker
+        set w_name = #{w_name}
+        where w_id = #{w_id}
+    </update>
 </mapper>

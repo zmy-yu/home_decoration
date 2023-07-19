@@ -50,11 +50,26 @@ public class WorkerController {
         return workerService.getConstructionWorker();
     }
 
+    /**
+     * 根据工人id查询工人信息
+     *
+     * @param w_id 工人id
+     * @return
+     */
     @GetMapping("/id")
     public Result<Worker> getById(@RequestParam("w_id") Integer w_id) {
         return workerService.getById(w_id);
     }
 
+    /**
+     * 添加工人信息
+     *
+     * @param worker 工人对象
+     * @param errors 校验
+     * @param request 前端请求
+     * @return
+     * @throws ParseException
+     */
     @PostMapping("/add")
     public Result<Worker> add(@RequestBody @Valid Worker worker, BindingResult errors, HttpServletRequest request) throws ParseException {
         Result<Worker> result = new Result<>();
@@ -78,6 +93,14 @@ public class WorkerController {
         return result;
     }
 
+    /**
+     * 修改工人信息
+     *
+     * @param worker 工人对象
+     * @param request 前端请求
+     * @return
+     * @throws Exception
+     */
     @PutMapping("update")
     public Result<Worker> update(@RequestBody @Valid Worker worker, HttpServletRequest request) throws Exception {
         Result<Worker> result = new Result<>();
@@ -133,8 +156,8 @@ public class WorkerController {
     /**
      * 修改工人头像
      *
-     * @param file
-     * @param w_id
+     * @param file 图片文件
+     * @param w_id 工人id
      * @return
      */
     @PostMapping("/workerupload")
@@ -170,7 +193,7 @@ public class WorkerController {
     /**
      * 获取工人价格和历史价格
      *
-     * @param w_id
+     * @param w_id 工人id
      * @return
      */
     @GetMapping("/prices")

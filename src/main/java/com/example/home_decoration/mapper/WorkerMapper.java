@@ -87,4 +87,12 @@ public interface WorkerMapper {
      * @return
      */
     List<WorkerOrder> getHistoryOrder(Integer w_id);
+
+    /**
+     * 修改工人名字
+     *
+     * @param w_id 工人id
+     * @return
+     */
+    int updateNameById(Integer w_id, String w_name);
 }
