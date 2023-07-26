@@ -104,7 +104,7 @@
                o_date,
                o_area,
                o_garde,
-               o_price,f
+               o_price,
                o_id
         from workerorder
         where w_id = #{w_id}

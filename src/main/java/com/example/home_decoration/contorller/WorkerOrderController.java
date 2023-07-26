@@ -42,16 +42,14 @@ public class WorkerOrderController {
      * @return
      */
     @PutMapping("/updateHistoryOrder")
-    public Result<WorkerOrder> updateHistoryOrder(@RequestBody WorkerOrder[] workerOrder, HttpServletRequest request) {
+    public Result<WorkerOrder> updateHistoryOrder(@RequestBody WorkerOrder workerOrder, HttpServletRequest request) {
         Result result = new Result<>();
         Integer u_role = JwtUtil.getU_role(request);
         if (u_role != 9) {
             result.setResultFailed("没有权限修改，请联系管理员！");
             return result;
         }
-        for (int i = 0; i < workerOrder.length; i++) {
-            workerOrderService.updateHistoryOrder(workerOrder[i]);
-        }
+        workerOrderService.updateHistoryOrder(workerOrder);
         result.setResultSuccess("修改成功！");
         return result;
     }
@@ -66,22 +64,22 @@ public class WorkerOrderController {
     @PostMapping("/add")
     public Result<WorkerOrder> add(@RequestBody WorkerOrder workerOrder, HttpServletRequest request) {
         Result<WorkerOrder> result = new Result<>();
-        Integer u_role = JwtUtil.getU_role(request);
-        if (u_role != 9) {
-            result.setResultFailed("没有权限修改，请联系管理员！");
-            return result;
-        }
+//        Integer u_role = JwtUtil.getU_role(request);
+//        if (u_role != 9) {
+//            result.setResultFailed("没有权限修改，请联系管理员！");
+//            return result;
+//        }
         return workerOrderService.add(workerOrder);
     }
 
     @DeleteMapping("/delete")
     public Result<WorkerOrder> delete(@RequestParam("o_id") Integer o_id, HttpServletRequest request) {
         Result<WorkerOrder> result = new Result<>();
-        Integer u_role = JwtUtil.getU_role(request);
-        if (u_role != 9) {
-            result.setResultFailed("没有权限修改，请联系管理员！");
-            return result;
-        }
+//        Integer u_role = JwtUtil.getU_role(request);
+//        if (u_role != 9) {
+//            result.setResultFailed("没有权限修改，请联系管理员！");
+//            return result;
+//        }
         return workerOrderService.delete(o_id);
     }
 }
