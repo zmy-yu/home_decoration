@@ -123,7 +123,7 @@ public class UserController {
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         String newFileName = System.currentTimeMillis() + "-" + fileName;
         //上传路径
-        String filePath = "/home/picture/user/";
+        String filePath = "/home/resources/picture/user/";
         String path = filePath + newFileName;
         File newFile = new File(path);
         //如果文件夹不存在，创建文件夹路径

@@ -34,7 +34,7 @@ public class PcitureController {
         String suffixName = fileName.substring(fileName.lastIndexOf("."));
         String newFileName = System.currentTimeMillis() + "-" + fileName;
         //上传路径
-        String filePath = "/home/picture/engineering/";
+        String filePath = "/home/resources/picture/engineering/";
         String path = filePath + newFileName;
         File newFile = new File(path);
         //如果文件夹不存在，创建文件夹路径
