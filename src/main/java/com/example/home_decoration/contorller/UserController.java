@@ -135,7 +135,7 @@ public class UserController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String url = "www.zhikao168.com:7090/images/user/" + newFileName;
+        String url = "www.zhikao168.com:8083/images/user/" + newFileName;
         Integer u_id = JwtUtil.getU_id(request);
         result = userService.userUpload(url, u_id);
         return result;

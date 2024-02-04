@@ -185,7 +185,7 @@ public class WorkerController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String url = "www.zhikao168.com:7090/images/worker/" + newFileName;
+        String url = "www.zhikao168.com:8083/images/worker/" + newFileName;
         result = workerService.workerUpload(url, w_id);
         return result;
     }
